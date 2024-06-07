@@ -10,7 +10,7 @@ resource "azurerm_storage_account" "example" {
 
 
 resource "azurerm_virtual_network" "example" {
-  name                = join("-", "${var.vm_name}", "network")
+  name                = join("-", ["${var.vm_name}", "network"])
   address_space       = ["10.1.0.0/16"]
   location            = var.rg_loc
   resource_group_name = var.rg_name
@@ -24,7 +24,7 @@ resource "azurerm_subnet" "example" {
 }
 
 resource "azurerm_network_interface" "example" {
-  name                = join("-", "${var.vm_name}", "nic")
+  name                = join("-", ["${var.vm_name}", "nic"])
   resource_group_name = var.rg_name
   location            = var.rg_loc
 
